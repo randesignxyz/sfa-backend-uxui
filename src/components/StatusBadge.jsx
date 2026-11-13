@@ -1,18 +1,17 @@
 import React from 'react';
 import './StatusBadge.css';
 
-const palettes = {
-  Approved: { color: '#23764A', background: '#EAF7EF' },
-  Pending: { color: '#8A6016', background: '#FFF5DE' },
-  Rejected: { color: '#B33A3A', background: '#FDEDEC' },
-  Deactivated: { color: '#626975', background: '#F0F1F3' },
+const colors = {
+  Approved: '#52c41a',
+  Pending: '#1677ff',
+  Rejected: '#ff4d4f',
+  Deactivated: '#bfbfbf',
 };
 
 export default function StatusBadge({ status, className = '' }) {
-  const palette = palettes[status] || palettes.Deactivated;
   return (
-    <span className={`status-badge ${className}`} style={{ color: palette.color, backgroundColor: palette.background }}>
-      <span className="status-badge__dot" aria-hidden="true" />
+    <span className={`status-badge ${className}`}>
+      <span className="status-badge__dot" style={{backgroundColor: colors[status] || colors.Deactivated}} aria-hidden="true" />
       <span>{status || 'Unknown'}</span>
     </span>
   );
