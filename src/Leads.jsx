@@ -47,6 +47,15 @@ additionalShops.forEach((shop,index)=>{
 // A separate duplicate example for the second lead.
 Object.assign(initial[14],{shop:initial[1].shop,owner:initial[1].owner,ownerKh:initial[1].ownerKh,phone:initial[1].phone});
 initial[14].activity[0].description=`${initial[14].shop} was created.`;
+// Additional demo customers appear as the nearby radius expands.
+Array.from({length:30},(_,index)=>{
+ const outerRing=index>=10;
+ const ringIndex=outerRing?index-10:index;
+ const distanceKm=outerRing?11+ringIndex*(8/19):5.5+ringIndex*(4/9);
+ const angle=index*2.399963229728653;
+ const shop=`${outerRing?'Regional':'District'} Customer ${String(ringIndex+1).padStart(2,'0')}`;
+ initial.push({id:String(60963-index),code:String(5725934-index),shop,owner:`Demo Owner ${index+1}`,ownerKh:'',phone:`069${String(520100+index)}`,province:'Phnom Penh',salesperson:sampleSalespeople[index%sampleSalespeople.length],status:index%3===0?'Pending':'Approved',createdAt:'10 Nov 2026, 10:00 AM',latitude:11.6032772+(distanceKm/111.32)*Math.cos(angle),longitude:104.9006628+(distanceKm/(111.32*Math.cos(11.6032772*Math.PI/180)))*Math.sin(angle),activity:[{event:'Lead created',at:'10 Nov 2026, 10:00 AM',actor:'Admin Admin',description:`${shop} was created.`}]});
+});
 export default function Leads({tabs,activeTab,onOpenTab,onCloseTab,onBack}){
 const {message}=App.useApp();const [rows,setRows]=useState(initial),[query,setQuery]=useState(''),[status,setStatus]=useState('All'),[duplicate,setDuplicate]=useState(),[province,setProvince]=useState(),[salesperson,setSalesperson]=useState(),[selected,setSelected]=useState([]),[action,setAction]=useState(null);const [form]=Form.useForm();
 const isDuplicate=record=>findLeadDuplicates(record,rows).length>0;
