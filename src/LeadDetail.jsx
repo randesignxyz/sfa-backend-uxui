@@ -1,15 +1,17 @@
 import {findLeadDuplicates} from './utils/leadDuplicates';
 import LeadMap,{validLocation} from './components/LeadMap';
 import StatusBadge from './components/StatusBadge';
-import React,{useState} from 'react';
+import React,{useEffect,useState} from 'react';
 import dayjs from 'dayjs';
 import {Alert,App,Avatar,Button,Card,Col,Descriptions,Empty,Form,Input,Modal,Row,Select,Space,Table,Tabs,Typography} from 'antd';
-import {ArrowLeftOutlined,EditOutlined,StopOutlined,ShopOutlined,EnvironmentOutlined,UserOutlined,ClockCircleOutlined,CalendarOutlined,PaperClipOutlined,FileTextOutlined,ExportOutlined,CopyOutlined} from '@ant-design/icons';
+import {ArrowLeftOutlined,EditOutlined,StopOutlined,ShopOutlined,EnvironmentOutlined,UserOutlined,ClockCircleOutlined,CalendarOutlined,PaperClipOutlined,FileTextOutlined,ExportOutlined,CopyOutlined,EyeOutlined} from '@ant-design/icons';
 const {Title,Text}=Typography;
 const stamp=()=>new Date().toLocaleString('en-GB',{timeZone:'Asia/Phnom_Penh',dateStyle:'medium',timeStyle:'short'});
 const fields={house:'House no.',streetNo:'Street no.',street:'Street name',province:'Province',district:'District',commune:'Commune',village:'Village',channel:'Channel',subChannel:'Subchannel',outlet:'Outlet type',priceCode:'Price code',latitude:'Latitude',longitude:'Longitude'};
-export default function LeadDetail({lead,onBack,onUpdate,salespeople,provinces,shops=[],onOpenLead}){
+export default function LeadDetail({lead,onBack,onUpdate,salespeople,provinces,shops=[],onOpenLead,navigationVersion=0}){
 const {message,modal}=App.useApp();const [editing,setEditing]=useState(false);const [form]=Form.useForm();
+const [activeSection,setActiveSection]=useState('details');
+useEffect(()=>{setActiveSection('details')},[navigationVersion]);
 const items=entries=>Object.entries(entries).map(([label,children])=>({key:label,label,children:children||<span className="empty-value">—</span>}));
 const duplicates=findLeadDuplicates(lead,shops);
 const hasLocation=validLocation(lead);
@@ -24,9 +26,10 @@ return <div className="lead-detail-page"><div className="lead-detail-nav"><Butto
 {title:'Shop Name',dataIndex:'shop',width:210},
 {title:'Phone',dataIndex:'phone',width:135},
 {title:'Province',dataIndex:'province',width:130,render:value=>value||<span className="empty-value">—</span>},
-{title:'Status',dataIndex:'status',width:120,render:value=><StatusBadge status={value}/>}
+{title:'Status',dataIndex:'status',width:120,render:value=><StatusBadge status={value}/>},
+{title:'Action',key:'action',width:100,fixed:'right',render:(_,record)=><Button size="small" icon={<EyeOutlined/>} onClick={()=>onOpenLead(record)}>View</Button>}
 ]}/></>}/>}
-<Tabs className="lead-detail-tabs" defaultActiveKey="details" items={[
+<Tabs className="lead-detail-tabs" activeKey={activeSection} onChange={setActiveSection} items={[
 {key:'details',label:'Details',icon:<ShopOutlined/>,children:(<Row gutter={[20,20]}><Col span={24}><Card title="Owner information" className="lead-detail-card"><Descriptions layout="horizontal" column={{xs:1,sm:3}} items={items({'Owner name (EN)':lead.owner,'Owner name (KH)':lead.ownerKh,'Phone':<Text copyable><Typography.Link className="lead-phone" href={`tel:${lead.phone}`}>{lead.phone}</Typography.Link></Text>})}/></Card><Card title={<Space><ShopOutlined/>Outlet information</Space>} className="lead-detail-card"><Descriptions layout="horizontal" column={{xs:1,sm:2,lg:3}} items={items({...Object.fromEntries(['channel','subChannel','outlet','priceCode'].map(key=>[fields[key],lead[key]])),Salesperson:lead.salesperson?`${lead.salesperson.slice(7)} (${lead.salesperson.slice(0,6)})`:null})}/></Card><Card title={<Space><EnvironmentOutlined/>Address</Space>} className="lead-detail-card"><Descriptions layout="horizontal" column={{xs:1,sm:2,lg:3}} items={items(Object.fromEntries(['house','streetNo','street','province','district','commune','village'].map(key=>[fields[key],lead[key]])))}/></Card><Card title={<Space><EnvironmentOutlined/>Outlet location</Space>} className="lead-detail-card" extra={hasLocation?<Button icon={<ExportOutlined/>} href={mapUrl} target="_blank" rel="noopener noreferrer">Open in Google Maps</Button>:null}>{hasLocation?<><LeadMap lead={lead} shops={shops}/><div className="lead-coordinates"><Button icon={<CopyOutlined/>} onClick={async()=>{try{await navigator.clipboard.writeText(mapUrl);message.success('Address link copied')}catch{message.error('Could not copy address link. Please try again.')}}}>Copy address link</Button></div></>:<div className="lead-map-empty"><EnvironmentOutlined/><Text type="secondary">No location recorded for this lead.</Text><Button onClick={()=>{form.setFieldsValue(lead);setEditing(true)}}>Add coordinates</Button></div>}</Card></Col>
 </Row>)},
 {key:'attachments',label:'Attachments',icon:<PaperClipOutlined/>,children:<Card><Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="No attachments for this lead"/></Card>},
