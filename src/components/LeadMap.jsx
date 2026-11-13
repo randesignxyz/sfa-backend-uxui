@@ -20,6 +20,8 @@ export default function LeadMap({lead,shops=[]}){
   const map=L.map(node.current,{scrollWheelZoom:false}).setView(center,14);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',maxZoom:19}).addTo(map);
   L.control.scale({imperial:false,position:'bottomleft'}).addTo(map);
+  const CurrentCustomerControl=L.Control.extend({options:{position:'topright'},onAdd(){const container=L.DomUtil.create('div','leaflet-bar customer-location-control');const button=L.DomUtil.create('button','customer-location-button',container);button.type='button';button.title='Center on current customer';button.setAttribute('aria-label','Center map on current customer');button.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5"/><path d="M12 1v4m0 14v4M1 12h4m14 0h4"/></svg>';L.DomEvent.disableClickPropagation(container);L.DomEvent.disableScrollPropagation(container);L.DomEvent.on(button,'click',()=>map.setView(center,16,{animate:true}));return container}});
+  new CurrentCustomerControl().addTo(map);
   const popup=(shop,current=false)=>{
    const box=document.createElement('div');box.className='customer-map-card';
    const eyebrow=document.createElement('div');eyebrow.className='customer-map-card__eyebrow';eyebrow.textContent=current?'Current customer':`${Math.round(shop.distance).toLocaleString()} m away`;box.append(eyebrow);
