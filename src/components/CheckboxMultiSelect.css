@@ -1,1 +1,3 @@
 .checkbox-multiselect-option{display:flex;align-items:center;gap:8px}
+.checkbox-multiselect-all{padding:9px 12px;border-bottom:1px solid #f0f0f0;margin-bottom:4px}.checkbox-multiselect-all .ant-checkbox-wrapper{width:100%;font-size:14px;font-weight:500}
+.checkbox-multiselect-popup .ant-select-item-option-selected:not(.ant-select-item-option-disabled){background:transparent;font-weight:400}.checkbox-multiselect-popup .ant-select-item-option-selected.ant-select-item-option-active:not(.ant-select-item-option-disabled){background:#fafafa}

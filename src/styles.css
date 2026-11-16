@@ -135,3 +135,8 @@ body{font-family:Inter,"Kantumruy Pro",Arial,sans-serif}
 .lead-radius-control .ant-slider .ant-slider-track,.lead-radius-control .ant-slider:hover .ant-slider-track{background-color:#B49A00}.lead-radius-control .ant-slider .ant-slider-handle::after,.lead-radius-control .ant-slider .ant-slider-handle:hover::after,.lead-radius-control .ant-slider .ant-slider-handle:focus::after{box-shadow:0 0 0 2px #B49A00}.lead-radius-control .ant-slider .ant-slider-dot-active{border-color:#B49A00}.lead-radius-control .ant-slider .ant-slider-mark-text-active{color:#806d00}
 .lead-radius-control .ant-slider .ant-slider-mark-text,.lead-radius-control .ant-slider .ant-slider-mark-text-active,.lead-radius-control .lead-radius-heading>.ant-typography{color:#262626}
 .lead-map-controls{gap:12px}
+.lead-edit-form .ant-form-item-label>label{color:#737373}
+.prospect-edit-heading{max-width:1200px;margin:0 auto 20px}.prospect-edit-heading>.ant-btn{padding-left:0;margin-bottom:8px}.prospect-edit-heading>.ant-typography{margin:0;font-size:24px;font-weight:600}
+.prospect-edit-heading{display:flex;align-items:center;gap:16px}.prospect-edit-heading>.ant-btn{margin-bottom:0;flex-shrink:0}.prospect-edit-heading>.ant-typography{margin:0}.prospect-create-heading{margin-left:0;margin-right:0}
+.lead-reference-table .lead-name.ant-btn-link:not(:disabled):hover,.lead-reference-table .lead-name.ant-btn-link:not(:disabled):active{color:#20252b;background:transparent}
+.prospect-create-page,.lead-edit-form,.prospect-edit-heading,.lead-edit-footer{max-width:none;width:100%;box-sizing:border-box}.prospect-create-page,.lead-edit-form,.prospect-edit-heading,.lead-edit-footer{margin-left:0;margin-right:0}
