@@ -134,3 +134,4 @@ body{font-family:Inter,"Kantumruy Pro",Arial,sans-serif}
 .prospect-empty-icon{font-size:48px;color:#bfbfbf;line-height:1}.prospect-empty-state .ant-empty-image:has(.prospect-empty-icon){height:auto;margin-bottom:16px}
 .lead-radius-control .ant-slider .ant-slider-track,.lead-radius-control .ant-slider:hover .ant-slider-track{background-color:#B49A00}.lead-radius-control .ant-slider .ant-slider-handle::after,.lead-radius-control .ant-slider .ant-slider-handle:hover::after,.lead-radius-control .ant-slider .ant-slider-handle:focus::after{box-shadow:0 0 0 2px #B49A00}.lead-radius-control .ant-slider .ant-slider-dot-active{border-color:#B49A00}.lead-radius-control .ant-slider .ant-slider-mark-text-active{color:#806d00}
 .lead-radius-control .ant-slider .ant-slider-mark-text,.lead-radius-control .ant-slider .ant-slider-mark-text-active,.lead-radius-control .lead-radius-heading>.ant-typography{color:#262626}
+.lead-map-controls{gap:12px}
