@@ -92,7 +92,7 @@
     "longitude": 104.837779,
     "hasSaleInvoice": false,
     "lastInvoiceDate": null,
-    "status": "Deactivated",
+    "status": "Inactive",
     "activity": []
   },
   {
@@ -220,7 +220,7 @@
     "longitude": 104.9139749,
     "hasSaleInvoice": false,
     "lastInvoiceDate": null,
-    "status": "Deactivated",
+    "status": "Inactive",
     "activity": []
   },
   {
@@ -316,7 +316,7 @@
     "longitude": 104.908775,
     "hasSaleInvoice": true,
     "lastInvoiceDate": "2026-02-10T17:57:16",
-    "status": "Deactivated",
+    "status": "Inactive",
     "activity": []
   },
   {
