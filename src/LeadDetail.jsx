@@ -9,7 +9,7 @@ import {Alert,App,Avatar,Button,Card,Col,Descriptions,Drawer,Empty,Form,Input,Mo
 import {ArrowLeftOutlined,EditOutlined,StopOutlined,ShopOutlined,EnvironmentOutlined,UserOutlined,ClockCircleOutlined,CalendarOutlined,PaperClipOutlined,FileTextOutlined,ExportOutlined,CopyOutlined,EyeOutlined} from '@ant-design/icons';
 const {Title,Text}=Typography;
 const stamp=()=>new Date().toLocaleString('en-GB',{timeZone:'Asia/Phnom_Penh',dateStyle:'medium',timeStyle:'short'});
-const fields={house:'House no.',streetNo:'Street no.',street:'Street name',province:'Province',district:'District',commune:'Commune',village:'Village',channel:'Channel',subChannel:'Sub Channel',outlet:'Outlet type',priceCode:'Price code',assignedPic:'Assign PIC',territory:'Territory',latitude:'Latitude',longitude:'Longitude'};
+const fields={house:'House no.',streetNo:'Street no.',street:'Street name',province:'Province',district:'District',commune:'Commune',village:'Village',channel:'Channel',subChannel:'Sub Channel',outlet:'Outlet type',priceCode:'Price code',assignedPic:'Assigned PIC',territory:'Territory',latitude:'Latitude',longitude:'Longitude'};
 export default function LeadDetail({lead,onBack,onUpdate,salespeople,provinces,shops=[],onOpenLead,navigationVersion=0}){
 const {message,modal}=App.useApp();const [editing,setEditing]=useState(false);const [form]=Form.useForm();
 const [activeSection,setActiveSection]=useState('details');
