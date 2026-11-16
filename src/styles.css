@@ -143,3 +143,8 @@ body{font-family:Inter,"Kantumruy Pro",Arial,sans-serif}
 /* Balance list controls with table content spacing. */
 .lead-filters{padding:16px;gap:12px}.lead-filters+.lead-tabs-toolbar{margin-top:0}.lead-tabs-toolbar{padding:0 16px 12px}.lead-reference-table .ant-table-thead>tr>th{padding:12px 16px;height:46px}.lead-reference-table .ant-table-tbody>tr>td{padding:13px 16px;height:52px}@media(max-width:767px){.lead-filters{padding:12px;gap:10px}.lead-tabs-toolbar{padding:0 12px 12px}.lead-reference-table .ant-table-thead>tr>th,.lead-reference-table .ant-table-tbody>tr>td{padding-left:12px;padding-right:12px}}
 .lead-reference-table .ant-table-thead>tr>th:first-child,.lead-reference-table .ant-table-tbody>tr>td:first-child{padding-left:24px}
+.required-field-mark{color:#ff4d4f}
+.prospect-profile-upload{display:flex;justify-content:center;text-align:center;margin-bottom:24px}.prospect-profile-upload .ant-form-item-label{text-align:center}.prospect-profile-upload .ant-form-item-control-input-content>.ant-space{justify-content:center}.prospect-profile-upload .ant-form-item{margin-bottom:0}
+.prospect-photo-control{display:flex;flex-direction:column;align-items:center;gap:12px}.prospect-photo-actions{justify-content:center}
+.prospect-photo-empty{width:150px;height:150px;display:flex;align-items:center;justify-content:center;background:#fafafa;border:1px dashed #d9d9d9;border-radius:8px;box-sizing:border-box;color:#bfbfbf;font-size:40px}
+.lead-edit-footer{justify-content:flex-end}
